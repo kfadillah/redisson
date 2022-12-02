@@ -14,7 +14,8 @@
  * limitations under the License.
  */
 package org.redisson.config;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 /**
  * 
  * @author Nikita Koksharov
@@ -22,6 +23,7 @@ package org.redisson.config;
  */
 public class SingleServerConfig extends BaseConfig<SingleServerConfig> {
 
+    private static final Logger log = LoggerFactory.getLogger(SingleServerConfig.class);
     /**
      * Redis server address
      *
@@ -83,9 +85,11 @@ public class SingleServerConfig extends BaseConfig<SingleServerConfig> {
      */
     public SingleServerConfig setConnectionPoolSize(int connectionPoolSize) {
         this.connectionPoolSize = connectionPoolSize;
+        log.warn("[CTEST][SET-PARAM] " + "connectionPoolSize" + getStackTrace()); //CTEST
         return this;
     }
     public int getConnectionPoolSize() {
+        log.warn("[CTEST][GET-PARAM] " + "connectionPoolSize"); //CTEST
         return connectionPoolSize;
     }
 
@@ -99,9 +103,11 @@ public class SingleServerConfig extends BaseConfig<SingleServerConfig> {
      */
     public SingleServerConfig setSubscriptionConnectionPoolSize(int subscriptionConnectionPoolSize) {
         this.subscriptionConnectionPoolSize = subscriptionConnectionPoolSize;
+        log.warn("[CTEST][SET-PARAM] " + "subscriptionConnectionPoolSize" + getStackTrace()); //CTEST
         return this;
     }
     public int getSubscriptionConnectionPoolSize() {
+        log.warn("[CTEST][GET-PARAM] " + "subscriptionConnectionPoolSize"); //CTEST
         return subscriptionConnectionPoolSize;
     }
 
@@ -114,10 +120,12 @@ public class SingleServerConfig extends BaseConfig<SingleServerConfig> {
     public SingleServerConfig setAddress(String address) {
         if (address != null) {
             this.address = address;
+            log.warn("[CTEST][SET-PARAM] " + "address" + getStackTrace()); //CTEST
         }
         return this;
     }
     public String getAddress() {
+        log.warn("[CTEST][GET-PARAM] " + "address"); //CTEST
         return address;
     }
 
@@ -133,9 +141,11 @@ public class SingleServerConfig extends BaseConfig<SingleServerConfig> {
      */
     public SingleServerConfig setDnsMonitoringInterval(long dnsMonitoringInterval) {
         this.dnsMonitoringInterval = dnsMonitoringInterval;
+        log.warn("[CTEST][SET-PARAM] " + "dnsMonitoringInterval" + getStackTrace()); //CTEST
         return this;
     }
     public long getDnsMonitoringInterval() {
+        log.warn("[CTEST][GET-PARAM] " + "dnsMonitoringInterval"); //CTEST
         return dnsMonitoringInterval;
     }
 
@@ -150,9 +160,11 @@ public class SingleServerConfig extends BaseConfig<SingleServerConfig> {
      */
     public SingleServerConfig setSubscriptionConnectionMinimumIdleSize(int subscriptionConnectionMinimumIdleSize) {
         this.subscriptionConnectionMinimumIdleSize = subscriptionConnectionMinimumIdleSize;
+        log.warn("[CTEST][SET-PARAM] " + "subscriptionConnectionMinimumIdleSize" + getStackTrace()); //CTEST
         return this;
     }
     public int getSubscriptionConnectionMinimumIdleSize() {
+        log.warn("[CTEST][GET-PARAM] " + "subscriptionConnectionMinimumIdleSize"); //CTEST
         return subscriptionConnectionMinimumIdleSize;
     }
 
@@ -166,9 +178,11 @@ public class SingleServerConfig extends BaseConfig<SingleServerConfig> {
      */
     public SingleServerConfig setConnectionMinimumIdleSize(int connectionMinimumIdleSize) {
         this.connectionMinimumIdleSize = connectionMinimumIdleSize;
+        log.warn("[CTEST][SET-PARAM] " + "connectionMinimumIdleSize" + getStackTrace()); //CTEST
         return this;
     }
     public int getConnectionMinimumIdleSize() {
+        log.warn("[CTEST][GET-PARAM] " + "connectionMinimumIdleSize"); //CTEST
         return connectionMinimumIdleSize;
     }
 
@@ -181,10 +195,22 @@ public class SingleServerConfig extends BaseConfig<SingleServerConfig> {
      */
     public SingleServerConfig setDatabase(int database) {
         this.database = database;
+        log.warn("[CTEST][SET-PARAM] " + "database" + getStackTrace()); //CTEST
         return this;
     }
     public int getDatabase() {
+        log.warn("[CTEST][GET-PARAM] " + "database"); //CTEST
         return database;
+    }
+
+    private static String getStackTrace() {
+        String stacktrace = " ";
+        for (StackTraceElement element : Thread.currentThread().getStackTrace()) {
+            stacktrace = stacktrace.concat(
+                    element.getClassName() + "#" + element.getMethodName() + "#" + element.getLineNumber() + "\t"
+            );
+        }
+        return stacktrace;
     }
 
 }

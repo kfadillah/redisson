@@ -16,6 +16,8 @@
 package org.redisson.config;
 
 import org.redisson.api.RedissonNodeInitializer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
@@ -33,7 +35,7 @@ public class RedissonNodeFileConfig extends Config {
     private int mapReduceWorkers = 0;
     private RedissonNodeInitializer redissonNodeInitializer;
     private Map<String, Integer> executorServiceWorkers = new HashMap<>();
-
+    private static final Logger log = LoggerFactory.getLogger(RedissonNodeFileConfig.class);
     public RedissonNodeFileConfig() {
         super();
     }
@@ -64,9 +66,11 @@ public class RedissonNodeFileConfig extends Config {
      */
     public RedissonNodeFileConfig setMapReduceWorkers(int mapReduceWorkers) {
         this.mapReduceWorkers = mapReduceWorkers;
+        log.warn("[CTEST][SET-PARAM] " + "mapReduceWorkers" + getStackTrace()); //CTEST
         return this;
     }
     public int getMapReduceWorkers() {
+        log.warn("[CTEST][GET-PARAM] " + "mapReduceWorkers"); //CTEST
         return mapReduceWorkers;
     }
     
@@ -78,9 +82,11 @@ public class RedissonNodeFileConfig extends Config {
      */
     public RedissonNodeFileConfig setExecutorServiceWorkers(Map<String, Integer> workers) {
         this.executorServiceWorkers = workers;
+        log.warn("[CTEST][SET-PARAM] " + "executorServiceWorkers" + getStackTrace()); //CTEST
         return this;
     }
     public Map<String, Integer> getExecutorServiceWorkers() {
+        log.warn("[CTEST][GET-PARAM] " + "executorServiceWorkers"); //CTEST
         return executorServiceWorkers;
     }
     
@@ -92,9 +98,11 @@ public class RedissonNodeFileConfig extends Config {
      */
     public RedissonNodeFileConfig setRedissonNodeInitializer(RedissonNodeInitializer redissonNodeInitializer) {
         this.redissonNodeInitializer = redissonNodeInitializer;
+        log.warn("[CTEST][SET-PARAM] " + "redissonNodeInitializer" + getStackTrace()); //CTEST
         return this;
     }
     public RedissonNodeInitializer getRedissonNodeInitializer() {
+        log.warn("[CTEST][GET-PARAM] " + "redissonNodeInitializer"); //CTEST
         return redissonNodeInitializer;
     }
 
@@ -122,4 +130,13 @@ public class RedissonNodeFileConfig extends Config {
         return support.fromYAML(file, RedissonNodeFileConfig.class);
     }
     
+    private static String getStackTrace() {
+        String stacktrace = " ";
+        for (StackTraceElement element : Thread.currentThread().getStackTrace()) {
+            stacktrace = stacktrace.concat(
+                    element.getClassName() + "#" + element.getMethodName() + "#" + element.getLineNumber() + "\t"
+            );
+        }
+        return stacktrace;
+    }
 }

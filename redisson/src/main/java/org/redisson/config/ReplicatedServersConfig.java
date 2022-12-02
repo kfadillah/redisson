@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 package org.redisson.config;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,6 +30,7 @@ import java.util.List;
  */
 public class ReplicatedServersConfig extends BaseMasterSlaveServersConfig<ReplicatedServersConfig> {
 
+    private static final Logger log = LoggerFactory.getLogger(ReplicatedServersConfig.class);
     /**
      * Replication group node urls list
      */
@@ -64,13 +67,16 @@ public class ReplicatedServersConfig extends BaseMasterSlaveServersConfig<Replic
         return this;
     }
     public List<String> getNodeAddresses() {
+        log.warn("[CTEST][GET-PARAM] " + "nodeAddresses"); //CTEST
         return nodeAddresses;
     }
     public void setNodeAddresses(List<String> nodeAddresses) {
+        log.warn("[CTEST][SET-PARAM] " + "nodeAddresses" + getStackTrace()); //CTEST
         this.nodeAddresses = nodeAddresses;
     }
 
     public int getScanInterval() {
+        log.warn("[CTEST][GET-PARAM] " + "scanInterval"); //CTEST
         return scanInterval;
     }
     /**
@@ -83,6 +89,7 @@ public class ReplicatedServersConfig extends BaseMasterSlaveServersConfig<Replic
      */
     public ReplicatedServersConfig setScanInterval(int scanInterval) {
         this.scanInterval = scanInterval;
+        log.warn("[CTEST][SET-PARAM] " + "scanInterval" + getStackTrace()); //CTEST
         return this;
     }
 
@@ -96,10 +103,20 @@ public class ReplicatedServersConfig extends BaseMasterSlaveServersConfig<Replic
      */
     public ReplicatedServersConfig setDatabase(int database) {
         this.database = database;
+        log.warn("[CTEST][SET-PARAM] " + "database" + getStackTrace()); //CTEST
         return this;
     }
     public int getDatabase() {
+        log.warn("[CTEST][GET-PARAM] " + "database"); //CTEST
         return database;
     }
-
+    private static String getStackTrace() {
+        String stacktrace = " ";
+        for (StackTraceElement element : Thread.currentThread().getStackTrace()) {
+            stacktrace = stacktrace.concat(
+                    element.getClassName() + "#" + element.getMethodName() + "#" + element.getLineNumber() + "\t"
+            );
+        }
+        return stacktrace;
+    }
 }

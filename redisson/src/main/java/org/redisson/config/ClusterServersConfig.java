@@ -18,6 +18,8 @@ package org.redisson.config;
 import org.redisson.api.HostNatMapper;
 import org.redisson.api.HostPortNatMapper;
 import org.redisson.api.NatMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -32,7 +34,7 @@ import java.util.Map;
 public class ClusterServersConfig extends BaseMasterSlaveServersConfig<ClusterServersConfig> {
 
     private NatMapper natMapper = NatMapper.direct();
-    
+    private static final Logger log = LoggerFactory.getLogger(ClusterServersConfig.class);
     /**
      * Redis cluster node urls list
      */
@@ -67,13 +69,16 @@ public class ClusterServersConfig extends BaseMasterSlaveServersConfig<ClusterSe
         return this;
     }
     public List<String> getNodeAddresses() {
+        log.warn("[CTEST][GET-PARAM] " + "nodeAddresses"); //CTEST
         return nodeAddresses;
     }
     public void setNodeAddresses(List<String> nodeAddresses) {
+        log.warn("[CTEST][SET-PARAM] " + "nodeAddresses" + getStackTrace()); //CTEST
         this.nodeAddresses = nodeAddresses;
     }
 
     public int getScanInterval() {
+        log.warn("[CTEST][GET-PARAM] " + "scanInterval"); //CTEST
         return scanInterval;
     }
     /**
@@ -86,10 +91,12 @@ public class ClusterServersConfig extends BaseMasterSlaveServersConfig<ClusterSe
      */
     public ClusterServersConfig setScanInterval(int scanInterval) {
         this.scanInterval = scanInterval;
+        log.warn("[CTEST][SET-PARAM] " + "scanInterval" + getStackTrace()); //CTEST
         return this;
     }
 
     public boolean isCheckSlotsCoverage() {
+        log.warn("[CTEST][GET-PARAM] " + "checkSlotsCoverage"); //CTEST
         return checkSlotsCoverage;
     }
 
@@ -103,6 +110,7 @@ public class ClusterServersConfig extends BaseMasterSlaveServersConfig<ClusterSe
      */
     public ClusterServersConfig setCheckSlotsCoverage(boolean checkSlotsCoverage) {
         this.checkSlotsCoverage = checkSlotsCoverage;
+        log.warn("[CTEST][SET-PARAM] " + "checkSlotsCoverage" + getStackTrace()); //CTEST
         return this;
     }
 
@@ -118,6 +126,7 @@ public class ClusterServersConfig extends BaseMasterSlaveServersConfig<ClusterSe
     }
 
     public NatMapper getNatMapper() {
+        log.warn("[CTEST][GET-PARAM] " + "natMapper"); //CTEST
         return natMapper;
     }
 
@@ -133,8 +142,18 @@ public class ClusterServersConfig extends BaseMasterSlaveServersConfig<ClusterSe
      */
     public ClusterServersConfig setNatMapper(NatMapper natMapper) {
         this.natMapper = natMapper;
+        log.warn("[CTEST][SET-PARAM] " + "natMapper" + getStackTrace()); //CTEST
         return this;
     }
-    
+
+    private static String getStackTrace() {
+        String stacktrace = " ";
+        for (StackTraceElement element : Thread.currentThread().getStackTrace()) {
+            stacktrace = stacktrace.concat(
+                    element.getClassName() + "#" + element.getMethodName() + "#" + element.getLineNumber() + "\t"
+            );
+        }
+        return stacktrace;
+    }
 
 }

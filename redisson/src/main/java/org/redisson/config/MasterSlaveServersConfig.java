@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 package org.redisson.config;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -30,7 +32,7 @@ public class MasterSlaveServersConfig extends BaseMasterSlaveServersConfig<Maste
      * Redis slave servers addresses
      */
     private Set<String> slaveAddresses = new HashSet<String>();
-
+    private static final Logger log = LoggerFactory.getLogger(MasterSlaveServersConfig.class);
     /**
      * Redis master server address
      */
@@ -60,9 +62,11 @@ public class MasterSlaveServersConfig extends BaseMasterSlaveServersConfig<Maste
      */
     public MasterSlaveServersConfig setMasterAddress(String masterAddress) {
         this.masterAddress = masterAddress;
+        log.warn("[CTEST][SET-PARAM] " + "masterAddress" + getStackTrace()); //CTEST
         return this;
     }
     public String getMasterAddress() {
+        log.warn("[CTEST][GET-PARAM] " + "masterAddress"); //CTEST
         return masterAddress;
     }
 
@@ -81,9 +85,11 @@ public class MasterSlaveServersConfig extends BaseMasterSlaveServersConfig<Maste
         return this;
     }
     public Set<String> getSlaveAddresses() {
+        log.warn("[CTEST][GET-PARAM] " + "slaveAddresses"); //CTEST
         return slaveAddresses;
     }
     public void setSlaveAddresses(Set<String> readAddresses) {
+        log.warn("[CTEST][SET-PARAM] " + "slaveAddresses" + getStackTrace()); //CTEST
         this.slaveAddresses = readAddresses;
     }
 
@@ -96,10 +102,21 @@ public class MasterSlaveServersConfig extends BaseMasterSlaveServersConfig<Maste
      */
     public MasterSlaveServersConfig setDatabase(int database) {
         this.database = database;
+        log.warn("[CTEST][SET-PARAM] " + "database" + getStackTrace()); //CTEST
         return this;
     }
     public int getDatabase() {
+        log.warn("[CTEST][GET-PARAM] " + "database"); //CTEST
         return database;
+    }
+    private static String getStackTrace() {
+        String stacktrace = " ";
+        for (StackTraceElement element : Thread.currentThread().getStackTrace()) {
+            stacktrace = stacktrace.concat(
+                    element.getClassName() + "#" + element.getMethodName() + "#" + element.getLineNumber() + "\t"
+            );
+        }
+        return stacktrace;
     }
 
 }

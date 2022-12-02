@@ -144,6 +144,7 @@ public class Config {
     }
 
     public NettyHook getNettyHook() {
+        log.warn("[CTEST][GET-PARAM] " + "nettyHook"); //CTEST
         return nettyHook;
     }
 
@@ -155,6 +156,7 @@ public class Config {
      */
     public Config setNettyHook(NettyHook nettyHook) {
         this.nettyHook = nettyHook;
+        log.warn("[CTEST][SET-PARAM] " + "nettyHook" + getStackTrace()); //CTEST
         return this;
     }
 
@@ -163,16 +165,18 @@ public class Config {
      *
      * @see org.redisson.client.codec.Codec
      * @see org.redisson.codec.MarshallingCodec
-     * 
+     *
      * @param codec object
      * @return config
      */
     public Config setCodec(Codec codec) {
         this.codec = codec;
+        log.warn("[CTEST][SET-PARAM] " + "codec" + getStackTrace()); //CTEST
         return this;
     }
 
     public Codec getCodec() {
+        log.warn("[CTEST][GET-PARAM] " + "codec"); //CTEST
         return codec;
     }
 
@@ -180,10 +184,11 @@ public class Config {
      * Config option indicate whether Redisson Reference feature is enabled.
      * <p>
      * Default value is <code>true</code>
-     * 
+     *
      * @return <code>true</code> if Redisson Reference feature enabled
      */
     public boolean isReferenceEnabled() {
+        log.warn("[CTEST][GET-PARAM] " + "referenceEnabled"); //CTEST
         return referenceEnabled;
     }
 
@@ -191,11 +196,12 @@ public class Config {
      * Config option for enabling Redisson Reference feature
      * <p>
      * Default value is <code>true</code>
-     * 
+     *
      * @param redissonReferenceEnabled flag
      */
     public void setReferenceEnabled(boolean redissonReferenceEnabled) {
         this.referenceEnabled = redissonReferenceEnabled;
+        log.warn("[CTEST][SET-PARAM] " + "referenceEnabled" + getStackTrace()); //CTEST
     }
 
     /**
@@ -220,10 +226,12 @@ public class Config {
     }
 
     protected ClusterServersConfig getClusterServersConfig() {
+        log.warn("[CTEST][GET-PARAM] " + "clusterServersConfig"); //CTEST
         return clusterServersConfig;
     }
 
     protected void setClusterServersConfig(ClusterServersConfig clusterServersConfig) {
+        log.warn("[CTEST][SET-PARAM] " + "clusterServersConfig" + getStackTrace()); //CTEST
         this.clusterServersConfig = clusterServersConfig;
     }
 
@@ -250,31 +258,35 @@ public class Config {
     }
 
     protected ReplicatedServersConfig getReplicatedServersConfig() {
+        log.warn("[CTEST][GET-PARAM] " + "replicatedServersConfig"); //CTEST
         return replicatedServersConfig;
     }
 
     protected void setReplicatedServersConfig(ReplicatedServersConfig replicatedServersConfig) {
+        log.warn("[CTEST][SET-PARAM] " + "replicatedServersConfig" + getStackTrace()); //CTEST
         this.replicatedServersConfig = replicatedServersConfig;
     }
 
     /**
      * Returns the connection manager if supplied via
      * {@link #useCustomServers(ConnectionManager)}
-     * 
+     *
      * @return ConnectionManager
      */
     ConnectionManager getConnectionManager() {
+        log.warn("[CTEST][GET-PARAM] " + "connectionManager"); //CTEST
         return connectionManager;
     }
 
     /**
      * This is an extension point to supply custom connection manager.
-     * 
+     *
      * @see ReplicatedConnectionManager on how to implement a connection
      *      manager.
      * @param connectionManager for supply
      */
     public void useCustomServers(ConnectionManager connectionManager) {
+        log.warn("[CTEST][SET-PARAM] " + "connectionManager" + getStackTrace()); //CTEST
         this.connectionManager = connectionManager;
     }
 
@@ -300,10 +312,12 @@ public class Config {
     }
 
     protected SingleServerConfig getSingleServerConfig() {
+        log.warn("[CTEST][GET-PARAM] " + "singleConnectionConfig"); //CTEST
         return singleServerConfig;
     }
 
     protected void setSingleServerConfig(SingleServerConfig singleConnectionConfig) {
+        log.warn("[CTEST][SET-PARAM] " + "singleConnectionConfig" + getStackTrace()); //CTEST
         this.singleServerConfig = singleConnectionConfig;
     }
 
@@ -329,11 +343,13 @@ public class Config {
     }
 
     protected SentinelServersConfig getSentinelServersConfig() {
+        log.warn("[CTEST][GET-PARAM] " + "sentinelConnectionConfig"); //CTEST
         return sentinelServersConfig;
     }
 
     protected void setSentinelServersConfig(SentinelServersConfig sentinelConnectionConfig) {
         this.sentinelServersConfig = sentinelConnectionConfig;
+        log.warn("[CTEST][SET-PARAM] " + "sentinelConnectionConfig" + getStackTrace()); //CTEST
     }
 
     /**
@@ -358,10 +374,12 @@ public class Config {
     }
 
     protected MasterSlaveServersConfig getMasterSlaveServersConfig() {
+        log.warn("[CTEST][GET-PARAM] " + "masterSlaveConnectionConfig"); //CTEST
         return masterSlaveServersConfig;
     }
 
     protected void setMasterSlaveServersConfig(MasterSlaveServersConfig masterSlaveConnectionConfig) {
+        log.warn("[CTEST][SET-PARAM] " + "masterSlaveConnectionConfig" + getStackTrace()); //CTEST
         this.masterSlaveServersConfig = masterSlaveConnectionConfig;
     }
 
@@ -374,12 +392,13 @@ public class Config {
     }
 
     public int getThreads() {
+        log.warn("[CTEST][GET-PARAM] " + "threads"); //CTEST
         return threads;
     }
 
     /**
-     * Threads amount shared across all listeners of <code>RTopic</code> object, 
-     * invocation handlers of <code>RRemoteService</code> object  
+     * Threads amount shared across all listeners of <code>RTopic</code> object,
+     * invocation handlers of <code>RRemoteService</code> object
      * and <code>RExecutorService</code> tasks.
      * <p>
      * Default is <code>16</code>.
@@ -391,6 +410,7 @@ public class Config {
      */
     public Config setThreads(int threads) {
         this.threads = threads;
+        log.warn("[CTEST][SET-PARAM] " + "threads" + getStackTrace()); //CTEST
         return this;
     }
 
@@ -434,10 +454,12 @@ public class Config {
      */
     public Config setTransportMode(TransportMode transportMode) {
         this.transportMode = transportMode;
+        log.warn("[CTEST][SET-PARAM] " + "transportMode" + getStackTrace()); //CTEST
         return this;
     }
 
     public TransportMode getTransportMode() {
+        log.warn("[CTEST][GET-PARAM] " + "transportMode"); //CTEST
         return transportMode;
     }
 
@@ -453,30 +475,34 @@ public class Config {
      */
     public Config setNettyThreads(int nettyThreads) {
         this.nettyThreads = nettyThreads;
+        log.warn("[CTEST][SET-PARAM] " + "nettyThreads" + getStackTrace()); //CTEST
         return this;
     }
 
     public int getNettyThreads() {
+        log.warn("[CTEST][GET-PARAM] " + "nettyThreads"); //CTEST
         return nettyThreads;
     }
 
     /**
-     * Use external ExecutorService. ExecutorService processes 
-     * all listeners of <code>RTopic</code>, 
-     * <code>RRemoteService</code> invocation handlers  
+     * Use external ExecutorService. ExecutorService processes
+     * all listeners of <code>RTopic</code>,
+     * <code>RRemoteService</code> invocation handlers
      * and <code>RExecutorService</code> tasks.
      * <p>
      * The caller is responsible for closing the ExecutorService.
-     * 
+     *
      * @param executor object
      * @return config
      */
     public Config setExecutor(ExecutorService executor) {
         this.executor = executor;
+        log.warn("[CTEST][SET-PARAM] " + "executor" + getStackTrace()); //CTEST
         return this;
     }
 
     public ExecutorService getExecutor() {
+        log.warn("[CTEST][GET-PARAM] " + "executor"); //CTEST
         return executor;
     }
 
@@ -487,7 +513,7 @@ public class Config {
      * So if there are multiple Redisson instances in same JVM
      * it would be useful to share one EventLoopGroup among them.
      * <p>
-     * Only {@link io.netty.channel.epoll.EpollEventLoopGroup}, 
+     * Only {@link io.netty.channel.epoll.EpollEventLoopGroup},
      * {@link io.netty.channel.kqueue.KQueueEventLoopGroup}
      * {@link io.netty.channel.nio.NioEventLoopGroup} can be used.
      * <p>
@@ -498,10 +524,12 @@ public class Config {
      */
     public Config setEventLoopGroup(EventLoopGroup eventLoopGroup) {
         this.eventLoopGroup = eventLoopGroup;
+        log.warn("[CTEST][SET-PARAM] " + "eventLoopGroup" + getStackTrace()); //CTEST
         return this;
     }
 
     public EventLoopGroup getEventLoopGroup() {
+        log.warn("[CTEST][GET-PARAM] " + "eventLoopGroup"); //CTEST
         return eventLoopGroup;
     }
 
@@ -520,10 +548,12 @@ public class Config {
      */
     public Config setLockWatchdogTimeout(long lockWatchdogTimeout) {
         this.lockWatchdogTimeout = lockWatchdogTimeout;
+        log.warn("[CTEST][SET-PARAM] " + "lockWatchdogTimeout" + getStackTrace()); //CTEST
         return this;
     }
 
     public long getLockWatchdogTimeout() {
+        log.warn("[CTEST][GET-PARAM] " + "lockWatchdogTimeout"); //CTEST
         return lockWatchdogTimeout;
     }
 
@@ -539,46 +569,52 @@ public class Config {
      */
     public Config setCheckLockSyncedSlaves(boolean checkLockSyncedSlaves) {
         this.checkLockSyncedSlaves = checkLockSyncedSlaves;
+        log.warn("[CTEST][SET-PARAM] " + "checkLockSyncedSlaves" + getStackTrace()); //CTEST
         return this;
     }
 
     public boolean isCheckLockSyncedSlaves() {
+        log.warn("[CTEST][GET-PARAM] " + "checkLockSyncedSlaves"); //CTEST
         return checkLockSyncedSlaves;
     }
 
     /**
-     * Defines whether to keep PubSub messages handling in arrival order 
-     * or handle messages concurrently. 
+     * Defines whether to keep PubSub messages handling in arrival order
+     * or handle messages concurrently.
      * <p>
      * This setting applied only for PubSub messages per channel.
      * <p>
      * Default is <code>true</code>.
-     * 
+     *
      * @param keepPubSubOrder - <code>true</code> if order required, <code>false</code> otherwise.
      * @return config
      */
     public Config setKeepPubSubOrder(boolean keepPubSubOrder) {
         this.keepPubSubOrder = keepPubSubOrder;
+        log.warn("[CTEST][SET-PARAM] " + "keepPubSubOrder" + getStackTrace()); //CTEST
         return this;
     }
 
     public boolean isKeepPubSubOrder() {
+        log.warn("[CTEST][GET-PARAM] " + "keepPubSubOrder"); //CTEST
         return keepPubSubOrder;
     }
 
     /**
      * Used to switch between {@link io.netty.resolver.dns.DnsAddressResolverGroup} implementations.
      * Switch to round robin {@link io.netty.resolver.dns.RoundRobinDnsAddressResolverGroup} when you need to optimize the url resolving.
-     * 
+     *
      * @param addressResolverGroupFactory
      * @return config
      */
     public Config setAddressResolverGroupFactory(AddressResolverGroupFactory addressResolverGroupFactory) {
         this.addressResolverGroupFactory = addressResolverGroupFactory;
+        log.warn("[CTEST][SET-PARAM] " + "AddressResolverGroupFactory" + getStackTrace()); //CTEST
         return this;
     }
 
     public AddressResolverGroupFactory getAddressResolverGroupFactory() {
+        log.warn("[CTEST][GET-PARAM] " + "AddressResolverGroupFactory"); //CTEST
         return addressResolverGroupFactory;
     }
 
@@ -706,47 +742,52 @@ public class Config {
     }
 
     /**
-     * Defines whether to use Lua-script cache on Redis side. 
+     * Defines whether to use Lua-script cache on Redis side.
      * Most Redisson methods are Lua-script based and this setting turned
      * on could increase speed of such methods execution and save network traffic.
      * <p>
      * Default is <code>false</code>.
-     * 
+     *
      * @param useScriptCache - <code>true</code> if Lua-script caching is required, <code>false</code> otherwise.
      * @return config
      */
     public Config setUseScriptCache(boolean useScriptCache) {
         this.useScriptCache = useScriptCache;
+        log.warn("[CTEST][SET-PARAM] " + "useScriptCache" + getStackTrace()); //CTEST
         return this;
     }
 
     public boolean isUseScriptCache() {
+        log.warn("[CTEST][GET-PARAM] " + "useScriptCache"); //CTEST
         return useScriptCache;
     }
 
     public int getMinCleanUpDelay() {
+        log.warn("[CTEST][GET-PARAM] " + "minCleanUpDelay"); //CTEST
         return minCleanUpDelay;
     }
-    
+
     /**
      * Defines minimum delay in seconds for clean up process of expired entries.
      * <p>
      * Applied to JCache, RSetCache, RMapCache, RListMultimapCache, RSetMultimapCache objects.
      * <p>
      * Default is <code>5</code>.
-     * 
+     *
      * @param minCleanUpDelay - delay in seconds
      * @return config
      */
     public Config setMinCleanUpDelay(int minCleanUpDelay) {
         this.minCleanUpDelay = minCleanUpDelay;
+        log.warn("[CTEST][SET-PARAM] " + "minCleanUpDelay" + getStackTrace()); //CTEST
         return this;
     }
 
     public int getMaxCleanUpDelay() {
+        log.warn("[CTEST][GET-PARAM] " + "maxCleanUpDelay"); //CTEST
         return maxCleanUpDelay;
     }
-    
+
     /**
      * Defines maximum delay in seconds for clean up process of expired entries.
      * <p>
@@ -759,10 +800,12 @@ public class Config {
      */
     public Config setMaxCleanUpDelay(int maxCleanUpDelay) {
         this.maxCleanUpDelay = maxCleanUpDelay;
+        log.warn("[CTEST][SET-PARAM] " + "maxCleanUpDelay" + getStackTrace()); //CTEST
         return this;
     }
 
     public int getCleanUpKeysAmount() {
+        log.warn("[CTEST][GET-PARAM] " + "cleanUpKeysAmount"); //CTEST
         return cleanUpKeysAmount;
     }
 
@@ -778,10 +821,12 @@ public class Config {
      */
     public Config setCleanUpKeysAmount(int cleanUpKeysAmount) {
         this.cleanUpKeysAmount = cleanUpKeysAmount;
+        log.warn("[CTEST][SET-PARAM] " + "cleanUpKeysAmount" + getStackTrace()); //CTEST
         return this;
     }
 
     public boolean isUseThreadClassLoader() {
+        log.warn("[CTEST][GET-PARAM] " + "useThreadClassLoader"); //CTEST
         return useThreadClassLoader;
     }
 
@@ -797,10 +842,12 @@ public class Config {
      */
     public Config setUseThreadClassLoader(boolean useThreadClassLoader) {
         this.useThreadClassLoader = useThreadClassLoader;
+        log.warn("[CTEST][SET-PARAM] " + "useThreadClassLoader" + getStackTrace()); //CTEST
         return this;
     }
 
     public long getReliableTopicWatchdogTimeout() {
+        log.warn("[CTEST][GET-PARAM] " + "reliableTopicWatchdogTimeout"); //CTEST
         return reliableTopicWatchdogTimeout;
     }
 
@@ -818,10 +865,12 @@ public class Config {
      */
     public Config setReliableTopicWatchdogTimeout(long timeout) {
         this.reliableTopicWatchdogTimeout = timeout;
+        log.warn("[CTEST][SET-PARAM] " + "reliableTopicWatchdogTimeout" + getStackTrace()); //CTEST
         return this;
     }
 
     public ConnectionListener getConnectionListener() {
+        log.warn("[CTEST][GET-PARAM] " + "connectionListener"); //CTEST
         return connectionListener;
     }
 
@@ -834,6 +883,17 @@ public class Config {
      */
     public Config setConnectionListener(ConnectionListener connectionListener) {
         this.connectionListener = connectionListener;
+        log.warn("[CTEST][SET-PARAM] " + "connectionListener" + getStackTrace()); //CTEST
         return this;
+    }
+
+    private static String getStackTrace() {
+        String stacktrace = " ";
+        for (StackTraceElement element : Thread.currentThread().getStackTrace()) {
+            stacktrace = stacktrace.concat(
+                    element.getClassName() + "#" + element.getMethodName() + "#" + element.getLineNumber() + "\t"
+            );
+        }
+        return stacktrace;
     }
 }

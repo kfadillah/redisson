@@ -134,10 +134,12 @@ public class BaseConfig<T extends BaseConfig<T>> {
      */
     public T setSubscriptionsPerConnection(int subscriptionsPerConnection) {
         this.subscriptionsPerConnection = subscriptionsPerConnection;
+        log.warn("[CTEST][SET-PARAM] " + "subscriptionsPerConnection" + getStackTrace()); //CTEST
         return (T) this;
     }
 
     public int getSubscriptionsPerConnection() {
+        log.warn("[CTEST][GET-PARAM] " + "subscriptionsPerConnection"); //CTEST
         return subscriptionsPerConnection;
     }
 
@@ -151,10 +153,12 @@ public class BaseConfig<T extends BaseConfig<T>> {
      */
     public T setPassword(String password) {
         this.password = password;
+        log.warn("[CTEST][SET-PARAM] " + "password" + getStackTrace()); //CTEST
         return (T) this;
     }
 
     public String getPassword() {
+        log.warn("[CTEST][GET-PARAM] " + "password"); //CTEST
         return password;
     }
 
@@ -170,10 +174,12 @@ public class BaseConfig<T extends BaseConfig<T>> {
      */
     public T setUsername(String username) {
         this.username = username;
+        log.warn("[CTEST][SET-PARAM] " + "username" + getStackTrace()); //CTEST
         return (T) this;
     }
 
     public String getUsername() {
+        log.warn("[CTEST][GET-PARAM] " + "username"); //CTEST
         return username;
     }
 
@@ -188,11 +194,13 @@ public class BaseConfig<T extends BaseConfig<T>> {
      * @return config
      */
     public T setRetryAttempts(int retryAttempts) {
+        log.warn("[CTEST][SET-PARAM] " + "retryAttempts" + getStackTrace()); //CTEST
         this.retryAttempts = retryAttempts;
         return (T) this;
     }
 
     public int getRetryAttempts() {
+        log.warn("[CTEST][GET-PARAM] " + "retryAttempts"); //CTEST
         return retryAttempts;
     }
 
@@ -207,10 +215,12 @@ public class BaseConfig<T extends BaseConfig<T>> {
      */
     public T setRetryInterval(int retryInterval) {
         this.retryInterval = retryInterval;
+        log.warn("[CTEST][SET-PARAM] " + "retryInterval" + getStackTrace()); //CTEST
         return (T) this;
     }
 
     public int getRetryInterval() {
+        log.warn("[CTEST][GET-PARAM] " + "retryInterval"); //CTEST
         return retryInterval;
     }
 
@@ -223,11 +233,13 @@ public class BaseConfig<T extends BaseConfig<T>> {
      * @return config
      */
     public T setTimeout(int timeout) {
+        log.warn("[CTEST][SET-PARAM] " + "timeout" + getStackTrace()); //CTEST
         this.timeout = timeout;
         return (T) this;
     }
 
     public int getTimeout() {
+        log.warn("[CTEST][GET-PARAM] " + "timeout"); //CTEST
         return timeout;
     }
 
@@ -242,10 +254,12 @@ public class BaseConfig<T extends BaseConfig<T>> {
      */
     public T setClientName(String clientName) {
         this.clientName = clientName;
+        log.warn("[CTEST][SET-PARAM] " + "clientName" + getStackTrace()); //CTEST
         return (T) this;
     }
 
     public String getClientName() {
+        log.warn("[CTEST][GET-PARAM] " + "clientName"); //CTEST
         return clientName;
     }
 
@@ -259,10 +273,12 @@ public class BaseConfig<T extends BaseConfig<T>> {
      */
     public T setConnectTimeout(int connectTimeout) {
         this.connectTimeout = connectTimeout;
+        log.warn("[CTEST][SET-PARAM] " + "connectTimeout" + getStackTrace()); //CTEST
         return (T) this;
     }
 
     public int getConnectTimeout() {
+        log.warn("[CTEST][GET-PARAM] " + "connectTimeout"); //CTEST
         return connectTimeout;
     }
 
@@ -278,14 +294,17 @@ public class BaseConfig<T extends BaseConfig<T>> {
      */
     public T setIdleConnectionTimeout(int idleConnectionTimeout) {
         this.idleConnectionTimeout = idleConnectionTimeout;
+        log.warn("[CTEST][SET-PARAM] " + "idleConnectionTimeout" + getStackTrace()); //CTEST
         return (T) this;
     }
 
     public int getIdleConnectionTimeout() {
+        log.warn("[CTEST][GET-PARAM] " + "idleConnectionTimeout"); //CTEST
         return idleConnectionTimeout;
     }
 
     public boolean isSslEnableEndpointIdentification() {
+        log.warn("[CTEST][GET-PARAM] " + "sslEnableEndpointIdentification"); //CTEST
         return sslEnableEndpointIdentification;
     }
 
@@ -299,10 +318,12 @@ public class BaseConfig<T extends BaseConfig<T>> {
      */
     public T setSslEnableEndpointIdentification(boolean sslEnableEndpointIdentification) {
         this.sslEnableEndpointIdentification = sslEnableEndpointIdentification;
+        log.warn("[CTEST][SET-PARAM] " + "sslEnableEndpointIdentification" + getStackTrace()); //CTEST
         return (T) this;
     }
 
     public SslProvider getSslProvider() {
+        log.warn("[CTEST][GET-PARAM] " + "sslProvider"); //CTEST
         return sslProvider;
     }
 
@@ -316,10 +337,12 @@ public class BaseConfig<T extends BaseConfig<T>> {
      */
     public T setSslProvider(SslProvider sslProvider) {
         this.sslProvider = sslProvider;
+        log.warn("[CTEST][SET-PARAM] " + "sslProvider" + getStackTrace()); //CTEST
         return (T) this;
     }
 
     public URL getSslTruststore() {
+        log.warn("[CTEST][GET-PARAM] " + "sslTruststore"); //CTEST
         return sslTruststore;
     }
 
@@ -333,10 +356,12 @@ public class BaseConfig<T extends BaseConfig<T>> {
      */
     public T setSslTruststore(URL sslTruststore) {
         this.sslTruststore = sslTruststore;
+        log.warn("[CTEST][SET-PARAM] " + "sslTruststore" + getStackTrace()); //CTEST
         return (T) this;
     }
 
     public String getSslTruststorePassword() {
+        log.warn("[CTEST][GET-PARAM] " + "sslTruststorePassword"); //CTEST
         return sslTruststorePassword;
     }
 
@@ -351,10 +376,12 @@ public class BaseConfig<T extends BaseConfig<T>> {
      */
     public T setSslTruststorePassword(String sslTruststorePassword) {
         this.sslTruststorePassword = sslTruststorePassword;
+        log.warn("[CTEST][SET-PARAM] " + "sslTruststorePassword" + getStackTrace()); //CTEST
         return (T) this;
     }
 
     public URL getSslKeystore() {
+        log.warn("[CTEST][GET-PARAM] " + "sslKeystore"); //CTEST
         return sslKeystore;
     }
 
@@ -369,10 +396,12 @@ public class BaseConfig<T extends BaseConfig<T>> {
      */
     public T setSslKeystore(URL sslKeystore) {
         this.sslKeystore = sslKeystore;
+        log.warn("[CTEST][SET-PARAM] " + "sslKeystore" + getStackTrace()); //CTEST
         return (T) this;
     }
 
     public String getSslKeystorePassword() {
+        log.warn("[CTEST][GET-PARAM] " + "sslKeystorePassword"); //CTEST
         return sslKeystorePassword;
     }
 
@@ -386,10 +415,12 @@ public class BaseConfig<T extends BaseConfig<T>> {
      */
     public T setSslKeystorePassword(String sslKeystorePassword) {
         this.sslKeystorePassword = sslKeystorePassword;
+        log.warn("[CTEST][SET-PARAM] " + "sslKeystorePassword" + getStackTrace()); //CTEST
         return (T) this;
     }
 
     public String[] getSslProtocols() {
+        log.warn("[CTEST][GET-PARAM] " + "sslProtocols"); //CTEST
         return sslProtocols;
     }
 
@@ -404,10 +435,12 @@ public class BaseConfig<T extends BaseConfig<T>> {
      */
     public T setSslProtocols(String[] sslProtocols) {
         this.sslProtocols = sslProtocols;
+        log.warn("[CTEST][SET-PARAM] " + "sslProtocols" + getStackTrace()); //CTEST
         return (T) this;
     }
 
     public int getPingConnectionInterval() {
+        log.warn("[CTEST][GET-PARAM] " + "pingConnectionInterval"); //CTEST
         return pingConnectionInterval;
     }
 
@@ -422,10 +455,12 @@ public class BaseConfig<T extends BaseConfig<T>> {
      */
     public T setPingConnectionInterval(int pingConnectionInterval) {
         this.pingConnectionInterval = pingConnectionInterval;
+        log.warn("[CTEST][SET-PARAM] " + "pingConnectionInterval" + getStackTrace()); //CTEST
         return (T) this;
     }
 
     public boolean isKeepAlive() {
+        log.warn("[CTEST][GET-PARAM] " + "keepAlive"); //CTEST
         return keepAlive;
     }
 
@@ -439,10 +474,12 @@ public class BaseConfig<T extends BaseConfig<T>> {
      */
     public T setKeepAlive(boolean keepAlive) {
         this.keepAlive = keepAlive;
+        log.warn("[CTEST][SET-PARAM] " + "keepAlive" + getStackTrace()); //CTEST
         return (T) this;
     }
 
     public boolean isTcpNoDelay() {
+        log.warn("[CTEST][GET-PARAM] " + "tcpNoDelay"); //CTEST
         return tcpNoDelay;
     }
 
@@ -456,11 +493,13 @@ public class BaseConfig<T extends BaseConfig<T>> {
      */
     public T setTcpNoDelay(boolean tcpNoDelay) {
         this.tcpNoDelay = tcpNoDelay;
+        log.warn("[CTEST][SET-PARAM] " + "tcpNoDelay" + getStackTrace()); //CTEST
         return (T) this;
     }
 
 
     public NameMapper getNameMapper() {
+        log.warn("[CTEST][GET-PARAM] " + "nameMapper"); //CTEST
         return nameMapper;
     }
 
@@ -473,6 +512,17 @@ public class BaseConfig<T extends BaseConfig<T>> {
      */
     public T setNameMapper(NameMapper nameMapper) {
         this.nameMapper = nameMapper;
+        log.warn("[CTEST][SET-PARAM] " + "nameMapper" + getStackTrace()); //CTEST
         return (T) this;
+    }
+
+    private static String getStackTrace() {
+        String stacktrace = " ";
+        for (StackTraceElement element : Thread.currentThread().getStackTrace()) {
+            stacktrace = stacktrace.concat(
+                    element.getClassName() + "#" + element.getMethodName() + "#" + element.getLineNumber() + "\t"
+            );
+        }
+        return stacktrace;
     }
 }

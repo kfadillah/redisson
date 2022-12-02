@@ -17,7 +17,7 @@
     </organization>
 
     <properties>
-        <maven.test.skip>true</maven.test.skip>
+        <maven.test.skip>false</maven.test.skip>
         <source.version>1.8</source.version>
         <javadoc.version>8</javadoc.version>
         <release.version>8</release.version>

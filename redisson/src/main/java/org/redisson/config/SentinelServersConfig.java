@@ -18,6 +18,8 @@ package org.redisson.config;
 import org.redisson.api.HostNatMapper;
 import org.redisson.api.HostPortNatMapper;
 import org.redisson.api.NatMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -31,6 +33,7 @@ import java.util.Map;
  */
 public class SentinelServersConfig extends BaseMasterSlaveServersConfig<SentinelServersConfig> {
 
+    private static final Logger log = LoggerFactory.getLogger(SentinelServersConfig.class);
     private List<String> sentinelAddresses = new ArrayList<>();
     
     private NatMapper natMapper = NatMapper.direct();
@@ -82,9 +85,11 @@ public class SentinelServersConfig extends BaseMasterSlaveServersConfig<Sentinel
      */
     public SentinelServersConfig setMasterName(String masterName) {
         this.masterName = masterName;
+        log.warn("[CTEST][SET-PARAM] " + "masterName" + getStackTrace()); //CTEST
         return this;
     }
     public String getMasterName() {
+        log.warn("[CTEST][GET-PARAM] " + "masterName"); //CTEST
         return masterName;
     }
 
@@ -96,10 +101,12 @@ public class SentinelServersConfig extends BaseMasterSlaveServersConfig<Sentinel
      */
     public SentinelServersConfig setSentinelUsername(String sentinelUsername) {
         this.sentinelUsername = sentinelUsername;
+        log.warn("[CTEST][SET-PARAM] " + "sentinelUsername" + getStackTrace()); //CTEST
         return this;
     }
 
     public String getSentinelUsername() {
+        log.warn("[CTEST][GET-PARAM] " + "sentinelUsername"); //CTEST
         return sentinelUsername;
     }
 
@@ -112,9 +119,11 @@ public class SentinelServersConfig extends BaseMasterSlaveServersConfig<Sentinel
      */
     public SentinelServersConfig setSentinelPassword(String sentinelPassword) {
         this.sentinelPassword = sentinelPassword;
+        log.warn("[CTEST][SET-PARAM] " + "sentinelPassword" + getStackTrace()); //CTEST
         return this;
     }
     public String getSentinelPassword() {
+        log.warn("[CTEST][GET-PARAM] " + "sentinelPassword"); //CTEST
         return sentinelPassword;
     }
 
@@ -130,10 +139,12 @@ public class SentinelServersConfig extends BaseMasterSlaveServersConfig<Sentinel
         return this;
     }
     public List<String> getSentinelAddresses() {
+        log.warn("[CTEST][GET-PARAM] " + "sentinelAddresses"); //CTEST
         return sentinelAddresses;
     }
     public void setSentinelAddresses(List<String> sentinelAddresses) {
         this.sentinelAddresses = sentinelAddresses;
+        log.warn("[CTEST][SET-PARAM] " + "sentinelAddresses" + getStackTrace()); //CTEST
     }
 
     /**
@@ -145,13 +156,16 @@ public class SentinelServersConfig extends BaseMasterSlaveServersConfig<Sentinel
      */
     public SentinelServersConfig setDatabase(int database) {
         this.database = database;
+        log.warn("[CTEST][SET-PARAM] " + "database" + getStackTrace()); //CTEST
         return this;
     }
     public int getDatabase() {
+        log.warn("[CTEST][GET-PARAM] " + "database"); //CTEST
         return database;
     }
 
     public int getScanInterval() {
+        log.warn("[CTEST][GET-PARAM] " + "scanInterval"); //CTEST
         return scanInterval;
     }
     /**
@@ -164,6 +178,7 @@ public class SentinelServersConfig extends BaseMasterSlaveServersConfig<Sentinel
      */
     public SentinelServersConfig setScanInterval(int scanInterval) {
         this.scanInterval = scanInterval;
+        log.warn("[CTEST][SET-PARAM] " + "scanInterval" + getStackTrace()); //CTEST
         return this;
     }
 
@@ -179,6 +194,7 @@ public class SentinelServersConfig extends BaseMasterSlaveServersConfig<Sentinel
     }
 
     public NatMapper getNatMapper() {
+        log.warn("[CTEST][GET-PARAM] " + "natMapper"); //CTEST
         return natMapper;
     }
 
@@ -194,10 +210,12 @@ public class SentinelServersConfig extends BaseMasterSlaveServersConfig<Sentinel
      */
     public SentinelServersConfig setNatMapper(NatMapper natMapper) {
         this.natMapper = natMapper;
+        log.warn("[CTEST][SET-PARAM] " + "natMapper" + getStackTrace()); //CTEST
         return this;
     }
 
     public boolean isCheckSentinelsList() {
+        log.warn("[CTEST][GET-PARAM] " + "checkSentinelsList"); //CTEST
         return checkSentinelsList;
     }
 
@@ -211,10 +229,12 @@ public class SentinelServersConfig extends BaseMasterSlaveServersConfig<Sentinel
      */
     public SentinelServersConfig setCheckSentinelsList(boolean checkSentinelsList) {
         this.checkSentinelsList = checkSentinelsList;
+        log.warn("[CTEST][SET-PARAM] " + "checkSentinelsList" + getStackTrace()); //CTEST
         return this;
     }
 
     public boolean isCheckSlaveStatusWithSyncing() {
+        log.warn("[CTEST][GET-PARAM] " + "checkSlaveStatusWithSyncing"); //CTEST
         return checkSlaveStatusWithSyncing;
     }
 
@@ -228,10 +248,12 @@ public class SentinelServersConfig extends BaseMasterSlaveServersConfig<Sentinel
      */
     public SentinelServersConfig setCheckSlaveStatusWithSyncing(boolean checkSlaveStatusWithSyncing) {
         this.checkSlaveStatusWithSyncing = checkSlaveStatusWithSyncing;
+        log.warn("[CTEST][SET-PARAM] " + "checkSlaveStatusWithSyncing" + getStackTrace()); //CTEST
         return this;
     }
 
     public boolean isSentinelsDiscovery() {
+        log.warn("[CTEST][GET-PARAM] " + "sentinelsDiscovery"); //CTEST
         return sentinelsDiscovery;
     }
 
@@ -245,6 +267,17 @@ public class SentinelServersConfig extends BaseMasterSlaveServersConfig<Sentinel
      */
     public SentinelServersConfig setSentinelsDiscovery(boolean sentinelsDiscovery) {
         this.sentinelsDiscovery = sentinelsDiscovery;
+        log.warn("[CTEST][SET-PARAM] " + "sentinelsDiscovery" + getStackTrace()); //CTEST
         return this;
+    }
+
+    private static String getStackTrace() {
+        String stacktrace = " ";
+        for (StackTraceElement element : Thread.currentThread().getStackTrace()) {
+            stacktrace = stacktrace.concat(
+                    element.getClassName() + "#" + element.getMethodName() + "#" + element.getLineNumber() + "\t"
+            );
+        }
+        return stacktrace;
     }
 }

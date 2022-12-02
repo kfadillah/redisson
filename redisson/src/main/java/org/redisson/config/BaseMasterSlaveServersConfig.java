@@ -17,6 +17,8 @@ package org.redisson.config;
 
 import org.redisson.connection.balancer.LoadBalancer;
 import org.redisson.connection.balancer.RoundRobinLoadBalancer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * 
@@ -30,7 +32,7 @@ public class BaseMasterSlaveServersConfig<T extends BaseMasterSlaveServersConfig
      * Сonnection load balancer for multiple Redis slave servers
      */
     private LoadBalancer loadBalancer = new RoundRobinLoadBalancer();
-
+    private static final Logger log = LoggerFactory.getLogger(BaseMasterSlaveServersConfig.class);
     /**
      * Redis 'slave' node minimum idle connection amount for <b>each</b> slave node
      */
@@ -102,9 +104,11 @@ public class BaseMasterSlaveServersConfig<T extends BaseMasterSlaveServersConfig
      */
     public T setSlaveConnectionPoolSize(int slaveConnectionPoolSize) {
         this.slaveConnectionPoolSize = slaveConnectionPoolSize;
+        log.warn("[CTEST][SET-PARAM] " + "slaveConnectionPoolSize" + getStackTrace()); //CTEST
         return (T) this;
     }
     public int getSlaveConnectionPoolSize() {
+        log.warn("[CTEST][GET-PARAM] " + "slaveConnectionPoolSize"); //CTEST
         return slaveConnectionPoolSize;
     }
     
@@ -123,10 +127,12 @@ public class BaseMasterSlaveServersConfig<T extends BaseMasterSlaveServersConfig
 
     public T setFailedSlaveReconnectionInterval(int failedSlavesReconnectionTimeout) {
         this.failedSlaveReconnectionInterval = failedSlavesReconnectionTimeout;
+        log.warn("[CTEST][SET-PARAM] " + "failedSlaveReconnectionInterval" + getStackTrace()); //CTEST
         return (T) this;
     }
 
     public int getFailedSlaveReconnectionInterval() {
+        log.warn("[CTEST][GET-PARAM] " + "failedSlaveReconnectionInterval"); //CTEST
         return failedSlaveReconnectionInterval;
     }
 
@@ -143,9 +149,11 @@ public class BaseMasterSlaveServersConfig<T extends BaseMasterSlaveServersConfig
      */
     public T setFailedSlaveCheckInterval(int slaveFailsInterval) {
         this.failedSlaveCheckInterval = slaveFailsInterval;
+        log.warn("[CTEST][SET-PARAM] " + "failedSlaveCheckInterval" + getStackTrace()); //CTEST
         return (T) this;
     }
     public int getFailedSlaveCheckInterval() {
+        log.warn("[CTEST][GET-PARAM] " + "failedSlaveCheckInterval"); //CTEST
         return failedSlaveCheckInterval;
     }
 
@@ -162,9 +170,11 @@ public class BaseMasterSlaveServersConfig<T extends BaseMasterSlaveServersConfig
      */
     public T setMasterConnectionPoolSize(int masterConnectionPoolSize) {
         this.masterConnectionPoolSize = masterConnectionPoolSize;
+        log.warn("[CTEST][SET-PARAM] " + "masterConnectionPoolSize" + getStackTrace()); //CTEST
         return (T) this;
     }
     public int getMasterConnectionPoolSize() {
+        log.warn("[CTEST][GET-PARAM] " + "masterConnectionPoolSize"); //CTEST
         return masterConnectionPoolSize;
     }
 
@@ -181,9 +191,11 @@ public class BaseMasterSlaveServersConfig<T extends BaseMasterSlaveServersConfig
      */
     public T setLoadBalancer(LoadBalancer loadBalancer) {
         this.loadBalancer = loadBalancer;
+        log.warn("[CTEST][SET-PARAM] " + "loadBalancer" + getStackTrace()); //CTEST
         return (T) this;
     }
     public LoadBalancer getLoadBalancer() {
+        log.warn("[CTEST][GET-PARAM] " + "loadBalancer"); //CTEST
         return loadBalancer;
     }
 
@@ -199,9 +211,11 @@ public class BaseMasterSlaveServersConfig<T extends BaseMasterSlaveServersConfig
      */
     public T setSubscriptionConnectionPoolSize(int subscriptionConnectionPoolSize) {
         this.subscriptionConnectionPoolSize = subscriptionConnectionPoolSize;
+        log.warn("[CTEST][SET-PARAM] " + "subscriptionConnectionPoolSize" + getStackTrace()); //CTEST
         return (T) this;
     }
     public int getSubscriptionConnectionPoolSize() {
+        log.warn("[CTEST][GET-PARAM] " + "subscriptionConnectionPoolSize"); //CTEST
         return subscriptionConnectionPoolSize;
     }
 
@@ -218,9 +232,11 @@ public class BaseMasterSlaveServersConfig<T extends BaseMasterSlaveServersConfig
      */
     public T setSlaveConnectionMinimumIdleSize(int slaveConnectionMinimumIdleSize) {
         this.slaveConnectionMinimumIdleSize = slaveConnectionMinimumIdleSize;
+        log.warn("[CTEST][SET-PARAM] " + "slaveConnectionMinimumIdleSize" + getStackTrace()); //CTEST
         return (T) this;
     }
     public int getSlaveConnectionMinimumIdleSize() {
+        log.warn("[CTEST][GET-PARAM] " + "slaveConnectionMinimumIdleSize"); //CTEST
         return slaveConnectionMinimumIdleSize;
     }
 
@@ -236,9 +252,11 @@ public class BaseMasterSlaveServersConfig<T extends BaseMasterSlaveServersConfig
      */
     public T setMasterConnectionMinimumIdleSize(int masterConnectionMinimumIdleSize) {
         this.masterConnectionMinimumIdleSize = masterConnectionMinimumIdleSize;
+        log.warn("[CTEST][SET-PARAM] " + "masterConnectionMinimumIdleSize" + getStackTrace()); //CTEST
         return (T) this;
     }
     public int getMasterConnectionMinimumIdleSize() {
+        log.warn("[CTEST][GET-PARAM] " + "masterConnectionMinimumIdleSize"); //CTEST
         return masterConnectionMinimumIdleSize;
     }
 
@@ -254,9 +272,11 @@ public class BaseMasterSlaveServersConfig<T extends BaseMasterSlaveServersConfig
      */
     public T setSubscriptionConnectionMinimumIdleSize(int subscriptionConnectionMinimumIdleSize) {
         this.subscriptionConnectionMinimumIdleSize = subscriptionConnectionMinimumIdleSize;
+        log.warn("[CTEST][SET-PARAM] " + "subscriptionConnectionMinimumIdleSize" + getStackTrace()); //CTEST
         return (T) this;
     }
     public int getSubscriptionConnectionMinimumIdleSize() {
+        log.warn("[CTEST][GET-PARAM] " + "subscriptionConnectionMinimumIdleSize"); //CTEST
         return subscriptionConnectionMinimumIdleSize;
     }
 
@@ -271,9 +291,11 @@ public class BaseMasterSlaveServersConfig<T extends BaseMasterSlaveServersConfig
      */
     public T setReadMode(ReadMode readMode) {
         this.readMode = readMode;
+        log.warn("[CTEST][SET-PARAM] " + "readMode" + getStackTrace()); //CTEST
         return (T) this;
     }
     public ReadMode getReadMode() {
+        log.warn("[CTEST][GET-PARAM] " + "readMode"); //CTEST
         return readMode;
     }
     
@@ -291,9 +313,11 @@ public class BaseMasterSlaveServersConfig<T extends BaseMasterSlaveServersConfig
      */
     public T setSubscriptionMode(SubscriptionMode subscriptionMode) {
         this.subscriptionMode = subscriptionMode;
+        log.warn("[CTEST][SET-PARAM] " + "subscriptionMode" + getStackTrace()); //CTEST
         return (T) this;
     }
     public SubscriptionMode getSubscriptionMode() {
+        log.warn("[CTEST][GET-PARAM] " + "subscriptionMode"); //CTEST
         return subscriptionMode;
     }
 
@@ -309,10 +333,21 @@ public class BaseMasterSlaveServersConfig<T extends BaseMasterSlaveServersConfig
      */
     public T setDnsMonitoringInterval(long dnsMonitoringInterval) {
         this.dnsMonitoringInterval = dnsMonitoringInterval;
+        log.warn("[CTEST][SET-PARAM] " + "dnsMonitoringInterval" + getStackTrace()); //CTEST
         return (T) this;
     }
     public long getDnsMonitoringInterval() {
+        log.warn("[CTEST][GET-PARAM] " + "dnsMonitoringInterval"); //CTEST
         return dnsMonitoringInterval;
+    }
+    private static String getStackTrace() {
+        String stacktrace = " ";
+        for (StackTraceElement element : Thread.currentThread().getStackTrace()) {
+            stacktrace = stacktrace.concat(
+                    element.getClassName() + "#" + element.getMethodName() + "#" + element.getLineNumber() + "\t"
+            );
+        }
+        return stacktrace;
     }
     
 }
