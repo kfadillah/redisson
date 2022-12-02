@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.redisson.api.RedissonClient;
 import org.redisson.config.Config;
+import java.net.URL;
 
 public abstract class BaseTest {
     
@@ -36,18 +37,33 @@ public abstract class BaseTest {
 //        if (redisAddress == null) {
 //            redisAddress = "127.0.0.1:6379";
 //        }
-        Config config = new Config();
+        
 //        config.setCodec(new MsgPackJacksonCodec());
 //        config.useSentinelServers().setMasterName("mymaster").addSentinelAddress("127.0.0.1:26379", "127.0.0.1:26389");
 //        config.useClusterServers().addNodeAddress("127.0.0.1:7004", "127.0.0.1:7001", "127.0.0.1:7000");
-        config.useSingleServer()
-                .setAddress(RedisRunner.getDefaultRedisServerBindAddressAndPort());
+
 //        .setPassword("mypass1");
 //        config.useMasterSlaveConnection()
 //        .setMasterAddress("127.0.0.1:6379")
 //        .addSlaveAddress("127.0.0.1:6399")
 //        .addSlaveAddress("127.0.0.1:6389");
-        return config;
+        try {
+            URL url = BaseTest.class.getResource("ctest-injection.yaml");
+            System.out.println(url);
+            Config cfg = Config.fromYAML(url);
+            System.out.println("[ctest] Ctest value injected!!");
+            cfg.useSingleServer()
+                .setAddress(RedisRunner.getDefaultRedisServerBindAddressAndPort());
+            return cfg;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+        // Config config = new Config();
+        // config.useSingleServer()
+        //         .setAddress(RedisRunner.getDefaultRedisServerBindAddressAndPort());
+        // System.out.println("!!!!using default");
+        // return config;
     }
 
     public static RedissonClient createInstance() {
